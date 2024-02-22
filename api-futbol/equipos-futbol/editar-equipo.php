@@ -11,7 +11,7 @@
 	</style>
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-	$url = "http://172.17.254.254/equipos-futbol-api/equipo.php?id=" . $_GET['id'];
+	$url = "http://localhost/PHP/2ºTRIMESTRE/RESTapi/RESTapi/api-futbol/equipos-futbol-api/equipo.php?id=" . $_GET['id'];
 
 	// abro la conexión GET... sí, es como abrir un archivo
 	$con = fopen($url, "r");
@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 </body>
 <?php
 }else if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	$url = "http://172.17.254.254/equipos-futbol-api/modif.php?";
+	$url = "http://localhost/PHP/2ºTRIMESTRE/RESTapi/RESTapi/api-futbol/equipos-futbol-api/modif.php?";
 	$url.= "id=".$_POST['id']."&";
 	$url.= "nombre=".urlencode($_POST['nombre'])."&";
 	$url.= "ciudad=".urlencode($_POST['ciudad'])."&";

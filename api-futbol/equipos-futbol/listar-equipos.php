@@ -8,21 +8,13 @@
 		table	{	border: 1px solid black;	padding: 2px 5px;	min-width: 500 px;	}
 		tr, td 	{	border: 1px solid black;	padding: 2px 5px;	}
 		th	 	{	border: 1px solid black;	padding: 2px 5px;	font-weight: bold;	}
+		a		{ 	font-weight: bolder;	color: blue;	border: 2px dashed blue;	cursor: pointer;}
 	</style>
 </head>
 <body>
 <?php
-	/*
-	$url = "http://172.17.254.254/equipos-futbol-api/";
-	// si hay ciudad, llamo a la API con ella
-	if (isset($_GET['ciudad']) && $_GET['ciudad']!="") {
-		$url .= "ciudad.php?ciudad=" . $_GET['ciudad'];
-	}else{
-		$url .= "todos.php";
-	}
-	*/
 
-	$url = "http://172.17.254.254/equipos-futbol-api/listar.php";
+	$url = "http://localhost/PHP/2ºTRIMESTRE/RESTapi/RESTapi/api-futbol/equipos-futbol-api/listar.php";
 	// si hay ciudad, llamo a la API con ella
 	if (isset($_GET['ciudad']) && $_GET['ciudad']!="") {
 		$url .= "?ciudad=" . $_GET['ciudad'];
@@ -41,6 +33,7 @@
 	fclose($con);
 	// como es un JSON, lo decodifico
 	$res = json_decode($res, true);
+
 ?>
 	<br/>
 	<div style="width:90%; margin: 0 auto;">
@@ -62,6 +55,7 @@
 					<td></td>
 					<td>
 						<button type="submit">Filtrar</button>
+						<a type="submit" name="agregarBtn" onclick="location.href='agregar-equipo.php'">Agregar</a>
 					</td>
 				</form>
 			</tr>
@@ -75,6 +69,7 @@
 		echo "  <td>{$equipo['fecha_creacion']}</td>\n";
 ?>
 <td><button onclick="location.href='editar-equipo.php?id=<?php echo $equipo['id'] ?>'">Editar</button></td>
+<td><button onclick="location.href='borrar-equipo.php?id=<?php echo $equipo['id'] ?>'">Borrar</button></td>
 <?php
 		echo "</tr>\n";
 	}
